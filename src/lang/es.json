@@ -1,0 +1,8 @@
+{
+    "delete_screen_description": "¿Quieres eliminar tu cuenta? No podrá iniciar sesión ni acceder a la información de su cuenta una vez que se haya eliminado su cuenta.",
+    "delete_popup_title": "Eliminar cuenta",
+    "delete_popup_msg": "¿Está seguro de que desea eliminar su cuenta? Todos los datos serán eliminados.",
+    "delete_popup_cancel": "Cancelar",
+    "delete_popup_ok": "Sí",
+    "delete_account": "Eliminar cuenta"
+}
