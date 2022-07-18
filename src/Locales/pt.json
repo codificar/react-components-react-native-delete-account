@@ -1,0 +1,8 @@
+{
+    "delete_screen_description": "Deseja deletar a sua conta? Não será possível realizar o login nem acessar as informações da conta após a exclusão da mesma",
+    "delete_popup_title": "Excluir conta",
+    "delete_popup_msg": "Tem certeza que deseja excluir sua conta? Todos os dados serão excluídos",
+    "delete_popup_cancel": "Cancelar",
+    "delete_popup_ok": "Sim",
+    "delete_account": "Deletar conta"
+}

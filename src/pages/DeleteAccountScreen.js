@@ -14,7 +14,7 @@ import {
 // Styles
 import styles from '../styles/DeleteAccountStyle';
 import { deleteAccount } from '../services/api';
-import { strings } from '../lang/i18n';
+import { strings } from '../Locales/i18n';
 import Toolbar from '../components/ToolBar';
 import TitleHeader from '../components/TitleHeader';
 import { withNavigation } from 'react-navigation';
