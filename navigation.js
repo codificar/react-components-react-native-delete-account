@@ -1,11 +1,11 @@
-import DeleteAccountScreen from './src/pages/DeleteAccountScreen';
+import DeleteAccount from './src/pages/DeleteAccount';
 
 const screens = {
-    DeleteAccountScreen: { screen: DeleteAccountScreen }
+    DeleteAccount: { screen: DeleteAccount }
 };
 
 export {
-    DeleteAccountScreen
+    DeleteAccount
 }
 
 export default screens;

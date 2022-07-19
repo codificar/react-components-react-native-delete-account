@@ -9,8 +9,6 @@ import {
   Alert,
 } from 'react-native';
 
-//import * as parse from '../Util/Parse';
-
 // Styles
 import styles from '../styles/DeleteAccountStyle';
 import { deleteAccount } from '../services/api';
@@ -21,19 +19,16 @@ import { withNavigation } from 'react-navigation';
 
 const icon_remove = require('../img/trash-simple.png');
 
-class DeleteAccountScreen extends Component {
+class DeleteAccount extends Component {
   constructor(props) {
     super(props);
 
-    const { url, id, token, logout_function } =
-      this.props.navigation.state.params;
-
     this.state = {
       isLoading: false,
-      url,
-      id,
-      token,
-      logout_function,
+      url: this.props.url,
+      id: this.props.id,
+      token: this.props.token,
+      logout_function: this.props.logout_function,
     };
 
   }
@@ -140,4 +135,4 @@ class DeleteAccountScreen extends Component {
 }
 
 
-export default withNavigation(DeleteAccountScreen);
+export default withNavigation(DeleteAccount);
