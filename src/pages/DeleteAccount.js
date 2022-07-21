@@ -60,18 +60,14 @@ class DeleteAccount extends Component {
       )
       .then(response => {
         if (response.data.success) {
-          
-          const { navigate } = this.props.navigation;
 
-          const user_id = this.state.id;
-          const user_token = this.state.token;
-
-          this.state.logout_function(user_id, user_token, navigate);
+          this.state.logout_function(this.state.id, this.state.token, this.returnConstNavigate());
 
           this.setState({ isLoading: false });
         }
       })
       .catch(error => {
+        this.state.logout_function(this.state.id, this.state.token, this.returnConstNavigate());
         console.log({ error });
         this.setState({ isLoading: false });
       });
