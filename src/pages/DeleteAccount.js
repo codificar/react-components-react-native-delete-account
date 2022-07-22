@@ -59,7 +59,7 @@ class DeleteAccount extends Component {
         this.state.url, this.state.id, this.state.token
       )
       .then(response => {
-        if (response.data.success) {
+        if (response.status === 200) {
 
           this.state.logout_function(this.state.id, this.state.token, this.returnConstNavigate());
 
