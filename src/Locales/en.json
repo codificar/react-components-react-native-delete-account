@@ -4,5 +4,7 @@
     "delete_popup_msg": "Are you sure you want to delete your account? All data will be deleted.",
     "delete_popup_cancel": "Cancel",
     "delete_popup_ok": "Yes",
-    "delete_account": "Delete account"
+    "delete_account": "Delete account",
+    "wish_continue": "Do you wish to continue?",
+    "delete_error": "You have a pending!"
 }

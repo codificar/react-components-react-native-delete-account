@@ -4,5 +4,7 @@
     "delete_popup_msg": "Tem certeza que deseja excluir sua conta? Todos os dados serão excluídos",
     "delete_popup_cancel": "Cancelar",
     "delete_popup_ok": "Sim",
-    "delete_account": "Deletar conta"
+    "delete_account": "Deletar conta",
+    "wish_continue": "Deseja Continuar?",
+    "delete_error": "Você possui uma pendência!"
 }

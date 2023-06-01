@@ -52,18 +52,24 @@ class DeleteAccount extends Component {
     this.backHandler.remove();
   }
 
-  async deleteAccount() {
+  async deleteAccount(force = false) {
     this.setState({ isLoading: true });
 
     await deleteAccount(
-        this.state.url, this.state.id, this.state.token
+        this.state.url, this.state.id, this.state.token, force
       )
       .then(response => {
-        if (response.status === 200) {
-
-          this.state.logout_function(this.state.id, this.state.token, this.returnConstNavigate());
-
+        if (response.data.success) {
           this.setState({ isLoading: false });
+          this.state.logout_function(this.state.id, this.state.token, this.returnConstNavigate());
+        } else {
+          this.setState({ isLoading: false });
+          const {error, credit, debit} = response.data;
+          if(credit || debit) {
+            this.showAlertBallance(error, credit);
+          } else {
+            Alert.alert(error);
+          }
         }
       })
       .catch(error => {
@@ -71,6 +77,32 @@ class DeleteAccount extends Component {
         console.log({ error });
         this.setState({ isLoading: false });
       });
+  }
+
+  showAlertBallance(message, credit = false) {
+    let buttons = [];
+    let title = strings('delete_error');
+    if(credit) {
+      title = strings('wish_continue');
+      buttons = [
+        {
+          text: strings('delete_popup_cancel'),
+          onPress: () => {},
+          style: 'cancel',
+        },
+        {
+          text: strings('delete_popup_ok'),
+          onPress: () => this.deleteAccount(true),
+        },
+      ]
+    }
+
+    Alert.alert(
+      title,
+      message,
+      buttons,
+      { cancelable: true },
+    );
   }
 
 
