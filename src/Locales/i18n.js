@@ -2,11 +2,13 @@ import I18n from 'react-native-i18n';
 
 const en = require('./en.json');
 const es = require('./es.json');
+const esPY = require('..Locales/es-PY.json');
 const ptBR = require('../Locales/pt-BR.json');
 const ptAO = require('../Locales/pt-AO.json');
 
 // Define the supported translation
 I18n.translations['es'] = { ...es, ...I18n.translations['es'] }
+I18n.translations['es-PY'] = { ...esPY, ...I18n.translations['es-PY'] }
 I18n.translations['es-cl'] = { ...es, ...I18n.translations['es-cl'] }
 I18n.translations['en'] = { ...en, ...I18n.translations['en'] }
 I18n.translations['en-US'] = { ...en, ...I18n.translations['en-US'] }
