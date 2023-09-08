@@ -2,7 +2,7 @@ import I18n from 'react-native-i18n';
 
 const en = require('./en.json');
 const es = require('./es.json');
-const esPY = require('..Locales/es-PY.json');
+const esPY = require('./es-PY.json');
 const ptBR = require('../Locales/pt-BR.json');
 const ptAO = require('../Locales/pt-AO.json');
 
