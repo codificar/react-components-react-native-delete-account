@@ -4,5 +4,7 @@
     "delete_popup_msg": "¿Está seguro de que desea eliminar su cuenta? Todos los datos serán eliminados.",
     "delete_popup_cancel": "Cancelar",
     "delete_popup_ok": "Sí",
-    "delete_account": "Eliminar cuenta"
+    "delete_account": "Eliminar cuenta",
+    "wish_continue": "¿Desea continuar?",
+    "delete_error": "¡Tienes un pendiente!"
 }
