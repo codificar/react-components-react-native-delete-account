@@ -9,7 +9,7 @@
 
     "repository": {
       "type": "git",
-      "url": "git+https://git.codificar.com.br/react-components/react-native-delete-account"
+      "url": "git+https://github.com/codificar/react-components-react-native-delete-account"
     },
 
     "dependencies": {
@@ -29,8 +29,8 @@
     "author": "Codificar",
 
     "bugs": {
-      "url": "https://git.codificar.com.br/react-components/react-native-delete-account/issues"
+      "url": "https://github.com/codificar/react-components-react-native-delete-account/issues"
     },
 
-    "homepage": "https://git.codificar.com.br/react-components/react-native-delete-account#readme"
+    "homepage": "https://github.com/codificar/react-components-react-native-delete-account#readme"
 }
