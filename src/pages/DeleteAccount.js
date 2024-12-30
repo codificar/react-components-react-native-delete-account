@@ -7,6 +7,7 @@ import {
   Image,
   BackHandler,
   Alert,
+  SafeAreaView,
 } from 'react-native';
 
 // Styles
@@ -127,11 +128,13 @@ class DeleteAccount extends Component {
 
   render() {
     return (
-      <ScrollView
+      <View
         style={[styles.parentContainer, { backgroundColor: '#FBFBFB' }]}
       >
         <View>
-          <Toolbar onPress={() => this.props.navigation.goBack()} />
+          <SafeAreaView>
+            <Toolbar onPress={() => this.props.navigation.goBack()} />
+          </SafeAreaView>
           <TitleHeader
             text={strings('delete_account')}
             align="center"
@@ -157,7 +160,7 @@ class DeleteAccount extends Component {
 
           
         </View>
-      </ScrollView>
+      </View>
     );
   }
 }
