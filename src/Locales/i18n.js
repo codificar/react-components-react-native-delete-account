@@ -5,6 +5,8 @@ const es = require('./es.json');
 const ptBR = require('../Locales/pt-BR.json');
 const ptAO = require('../Locales/pt-AO.json');
 
+I18n.fallbacks = true;
+
 // Define the supported translation
 I18n.translations['es'] = { ...es, ...I18n.translations['es'] }
 I18n.translations['es-cl'] = { ...es, ...I18n.translations['es-cl'] }
