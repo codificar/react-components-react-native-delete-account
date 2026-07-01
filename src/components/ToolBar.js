@@ -1,5 +1,6 @@
 import React from 'react';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import {
   View,
   Dimensions,
@@ -14,9 +15,10 @@ const statusbarHeight = getStatusBarHeight(true);
 
 
 function ToolBar({ onPress }) {
+  const insets = useSafeAreaInsets();
 
   return (
-    <View style={styles.principal2}>
+    <View style={[styles.principal2, { marginTop: 20 + insets.top }]}>
       <View style={{ height: 40 }}>
         <TouchableOpacity
           style={{ width: 60 }}
@@ -43,7 +45,6 @@ const styles = StyleSheet.create({
   principal2: {
     height: 40,
     width: "100%",
-    marginTop: 20 + statusbarHeight,
     elevation: 1
   },
   iconPress: {

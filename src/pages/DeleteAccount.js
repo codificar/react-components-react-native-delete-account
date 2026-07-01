@@ -7,8 +7,8 @@ import {
   Image,
   BackHandler,
   Alert,
-  SafeAreaView,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 // Styles
 import styles from '../styles/DeleteAccountStyle';
@@ -128,13 +128,12 @@ class DeleteAccount extends Component {
 
   render() {
     return (
-      <View
+      <SafeAreaView
+        edges={['right', 'bottom', 'left']}
         style={[styles.parentContainer, { backgroundColor: '#FBFBFB' }]}
       >
         <View>
-          <SafeAreaView>
-            <Toolbar onPress={() => this.props.navigation.goBack()} />
-          </SafeAreaView>
+          <Toolbar onPress={() => this.props.navigation.goBack()} />
           <TitleHeader
             text={strings('delete_account')}
             align="center"
@@ -158,9 +157,9 @@ class DeleteAccount extends Component {
             </TouchableOpacity>
           </View>
 
-          
+
         </View>
-      </View>
+      </SafeAreaView>
     );
   }
 }
