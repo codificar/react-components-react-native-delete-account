@@ -128,16 +128,21 @@ class DeleteAccount extends Component {
 
   render() {
     return (
-      <SafeAreaView
-        edges={['right', 'bottom', 'left']}
-        style={[styles.parentContainer, { backgroundColor: '#FBFBFB' }]}
-      >
-        <View>
-          <Toolbar onPress={() => this.props.navigation.goBack()} />
+      // Toolbar/TitleHeader FORA do ScrollView: dentro dele ficavam sujeitos
+      // ao recorte do ScrollView (mesmo problema encontrado no AddBalance da
+      // lib finance). Como filhos diretos da SafeAreaView (sem overflow
+      // proprio) renderizam inteiros.
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#FBFBFB' }} edges={['left', 'right', 'bottom']}>
+        <Toolbar onPress={() => this.props.navigation.goBack()} />
+        <View style={{ paddingHorizontal: 25 }}>
           <TitleHeader
             text={strings('delete_account')}
             align="center"
           />
+        </View>
+        <ScrollView
+          style={styles.parentContainer}
+        >
           <Text style={styles.description}>
             {strings('delete_screen_description')}
           </Text>
@@ -156,9 +161,7 @@ class DeleteAccount extends Component {
               </View>
             </TouchableOpacity>
           </View>
-
-
-        </View>
+        </ScrollView>
       </SafeAreaView>
     );
   }
