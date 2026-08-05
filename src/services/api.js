@@ -6,7 +6,7 @@ import axios from 'axios';
  * @param {String} url 
  * @returns 
  */
- export function deleteAccount(url, id, token){
-    return axios.post(`${url}`, { id: id, token: token });
+ export function deleteAccount(url, id, token, force){
+    return axios.post(`${url}`, { id: id, token: token, force: force});
 }
 

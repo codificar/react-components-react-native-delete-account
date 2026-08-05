@@ -8,6 +8,7 @@ import {
   BackHandler,
   Alert,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 // Styles
 import styles from '../styles/DeleteAccountStyle';
@@ -52,18 +53,24 @@ class DeleteAccount extends Component {
     this.backHandler.remove();
   }
 
-  async deleteAccount() {
+  async deleteAccount(force = false) {
     this.setState({ isLoading: true });
 
     await deleteAccount(
-        this.state.url, this.state.id, this.state.token
+        this.state.url, this.state.id, this.state.token, force
       )
       .then(response => {
-        if (response.status === 200) {
-
-          this.state.logout_function(this.state.id, this.state.token, this.returnConstNavigate());
-
+        if (response.data.success) {
           this.setState({ isLoading: false });
+          this.state.logout_function(this.state.id, this.state.token, this.returnConstNavigate());
+        } else {
+          this.setState({ isLoading: false });
+          const {error, credit, debit} = response.data;
+          if(credit || debit) {
+            this.showAlertBallance(error, credit);
+          } else {
+            Alert.alert(error);
+          }
         }
       })
       .catch(error => {
@@ -71,6 +78,32 @@ class DeleteAccount extends Component {
         console.log({ error });
         this.setState({ isLoading: false });
       });
+  }
+
+  showAlertBallance(message, credit = false) {
+    let buttons = [];
+    let title = strings('delete_error');
+    if(credit) {
+      title = strings('wish_continue');
+      buttons = [
+        {
+          text: strings('delete_popup_cancel'),
+          onPress: () => {},
+          style: 'cancel',
+        },
+        {
+          text: strings('delete_popup_ok'),
+          onPress: () => this.deleteAccount(true),
+        },
+      ]
+    }
+
+    Alert.alert(
+      title,
+      message,
+      buttons,
+      { cancelable: true },
+    );
   }
 
 
@@ -95,15 +128,21 @@ class DeleteAccount extends Component {
 
   render() {
     return (
-      <ScrollView
-        style={[styles.parentContainer, { backgroundColor: '#FBFBFB' }]}
-      >
-        <View>
-          <Toolbar onPress={() => this.props.navigation.goBack()} />
+      // Toolbar/TitleHeader FORA do ScrollView: dentro dele ficavam sujeitos
+      // ao recorte do ScrollView (mesmo problema encontrado no AddBalance da
+      // lib finance). Como filhos diretos da SafeAreaView (sem overflow
+      // proprio) renderizam inteiros.
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#FBFBFB' }} edges={['left', 'right', 'bottom']}>
+        <Toolbar onPress={() => this.props.navigation.goBack()} />
+        <View style={{ paddingHorizontal: 25 }}>
           <TitleHeader
             text={strings('delete_account')}
             align="center"
           />
+        </View>
+        <ScrollView
+          style={styles.parentContainer}
+        >
           <Text style={styles.description}>
             {strings('delete_screen_description')}
           </Text>
@@ -122,10 +161,8 @@ class DeleteAccount extends Component {
               </View>
             </TouchableOpacity>
           </View>
-
-          
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </SafeAreaView>
     );
   }
 }
